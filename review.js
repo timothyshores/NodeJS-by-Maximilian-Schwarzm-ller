@@ -23,6 +23,11 @@ console.log(toArray(1)); // returns [1]
 console.log(toArray(1, 2)); // returns [1, 2]
 console.log(toArray(1, 2, 3)); // returns [1,2,3]
 
-const printName = ({ name) => console.log(name);
-    
+const printName = ({ name }) => console.log(name); // prints Tim
+
 printName(person);
+
+// object destructuring
+// create new variable nameVar and assign it to person.name;
+const { name: nameVar } = person;
+console.log("nameVar", nameVar);
