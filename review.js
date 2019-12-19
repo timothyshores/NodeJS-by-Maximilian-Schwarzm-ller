@@ -13,6 +13,8 @@ const person = {
 	}
 };
 
+const copyPerson = { ...person };
+
 // console.log(summarizeUser(name, age, hasHobbies));
 
 const toArray = (...args) => args;
@@ -20,3 +22,7 @@ const toArray = (...args) => args;
 console.log(toArray(1)); // returns [1]
 console.log(toArray(1, 2)); // returns [1, 2]
 console.log(toArray(1, 2, 3)); // returns [1,2,3]
+
+const printName = ({ name) => console.log(name);
+    
+printName(person);
