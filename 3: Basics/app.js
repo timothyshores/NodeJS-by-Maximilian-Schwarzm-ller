@@ -1,15 +1,25 @@
-// import the http core module includedd with Node.js
+// import http & fs core modules included with Node.js
 const http = require("http");
+const fs = require("fs");
 
 // create const server and set equal to the console log CB function
 const server = http.createServer((req, res) => {
-	console.log(req.url, req.method, req.headers);
+	const { url, method } = req;
+	if (url === "/") {
+		res.write(
+			'<html><head><title>Enter Message</title></head><body><h1><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></h1></body></html>'
+		);
+		return res.end();
+	}
+
+	if (url === "/message" && method === "POST") {
+		fs.writeFileSync("message.txt", "DUMMY TEXT");
+		res.statusCode = 302;
+		res.setHeader("Location", "/");
+		return res.end();
+	}
+
 	res.setHeader("Content-Type", "text/html");
-	res.write("<html>");
-	res.write("<head><title>App.js</title></head>");
-	res.write("<body><h1>Hello World!</h1></body>");
-	res.write("</html>");
-	res.end();
 });
 
 // Creates server on localhost:3000
